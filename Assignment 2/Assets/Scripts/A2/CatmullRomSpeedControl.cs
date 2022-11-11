@@ -53,27 +53,6 @@ public class CatmullRomSpeedControl : MonoBehaviour
 			Vector3 p2 = points[(i + 1) % points.Length].position;
 			Vector3 p3 = points[(i + 2) % points.Length].position;
 
-			/*
-			//calculate samples
-			Vector3 previousPosition = Hermite(p0, p1, p2, p3, 0.0f);
-			segment.Add(new SamplePoint(0f, accumDistance));
-			for (int sample = 1; sample <= sampleRate; ++sample)
-			{
-				float t = sample / sampleRate;
-
-				Vector3 currentPosition = Hermite(p0, p1, p2, p3, t);
-
-				float pairwiseDistance = (currentPosition - previousPosition).magnitude;
-
-				accumDistance += pairwiseDistance;
-
-				segment.Add(new SamplePoint(t, accumDistance));
-
-				previousPosition = currentPosition;
-			}
-			table.Add(segment);
-			*/
-
 			//calculate samples
 			segment.Add(new SamplePoint(0f, accumDistance));
 			Vector3 prevPos = Hermite(p0, p1, p2, p3, 0);
@@ -126,8 +105,6 @@ public class CatmullRomSpeedControl : MonoBehaviour
 		Vector3 p2 = points[(currentIndex + 1) % points.Length].position;
 		Vector3 p3 = points[(currentIndex + 2) % points.Length].position;
 
-		//transform.LookAt(CatmullRom.Catmull(p0, p1, p2, p3, GetAdjustedT()));
-		//transform.position = CatmullRom.Catmull(p0, p1, p2, p3, GetAdjustedT());
 		transform.LookAt(Hermite(p0, p1, p2, p3, GetAdjustedT()));
 		transform.position = Hermite(p0, p1, p2, p3, GetAdjustedT());
 	}

@@ -23,7 +23,7 @@ public class Sensor : MonoBehaviour
         //float forward = Vector3.Dot(transform.forward, toObstacle.normalized);
         right = Vector3.Dot(transform.right, toObstacle.normalized);
         //Debug.Log(forward);
-        //Debug.Log(right);
+        Debug.Log(right);
     }
 
     private void OnTriggerEnter(Collider other)
