@@ -96,8 +96,7 @@ public class Steering_Seek : MonoBehaviour
     private void ProximityFlee()
     {
         float distance = (target.position - transform.position).magnitude;
-
-        Debug.Log($"{distance} < {fleeRadius} or {_rb.velocity.magnitude}");
+        
         if (distance < fleeRadius)
         {
             _rb.drag = 0;
